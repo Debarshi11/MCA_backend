@@ -8,7 +8,7 @@ import {
 } from "@material-ui/icons";
 import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import axios from "axios";
+import API from "../../utils/API";
 
 export default function Share() {
   const { user } = useContext(AuthContext);
@@ -30,11 +30,11 @@ export default function Share() {
       newPost.img = fileName;
       console.log(newPost);
       try {
-        await axios.post("/upload", data);
+        await API.post("/upload", data);
       } catch (err) {}
     }
     try {
-      await axios.post("/posts", newPost);
+      await API.post("/posts", newPost);
       window.location.reload();
     } catch (err) {}
   };
@@ -82,14 +82,14 @@ export default function Share() {
               <Label htmlColor="black" className="shareIcon" />
               <span className="shareOptionText">Tag</span>
             </div>
-            <div className="shareOption">
+            {/* <div className="shareOption">
               <Room htmlColor="red" className="shareIcon" />
               <span className="shareOptionText">Location</span>
             </div>
             <div className="shareOption">
               <EmojiEmotions htmlColor="green" className="shareIcon" />
               <span className="shareOptionText">Feelings</span>
-            </div>
+            </div> */}
           </div>
           <button className="shareButton" type="submit">
             Share

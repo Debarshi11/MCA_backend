@@ -1,4 +1,4 @@
-import axios from "axios";
+import API from "../../utils/API";
 import { useRef } from "react";
 import "./register.css";
 import { Link, useHistory } from "react-router-dom";
@@ -21,7 +21,7 @@ export default function Register() {
         password: password.current.value,
       };
       try {
-        await axios.post("/auth/register", user);
+        await API.post("/auth/register", user);
         history.push("/login");
       } catch (err) {
         console.log(err);
@@ -37,7 +37,7 @@ export default function Register() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">👁️ Whistle Blower</h3>
+          <h3 className="loginLogo">👁️ Mentor Space</h3>
           <span className="loginDesc">
             Find Leaks from all over the world in one place from anonymous users!
           </span>
